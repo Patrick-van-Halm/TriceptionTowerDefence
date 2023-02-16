@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d10b3cb8-913b-49bb-b21b-6f06dbeac5e7}">
+		<property name="assetPath">
+			<value>Music/Kvarmez - Lemonade.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>160.65306122448979</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5469715e-e1d7-4c8d-91b4-22a930d3277b}</destination>
+		</relationship>
+	</object>
+</objects>

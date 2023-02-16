@@ -5,56 +5,37 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WaveManager : MonoBehaviour
+public class WaveManager : SingletonMonoBehaviour<WaveManager>
 {
-    public GameObject[] Enemies;
-    public Transform EnemySpawn;
-    public Transform[] PathWaypoints;
-    private Dictionary<NavMeshAgent, int> navMeshWaypoints = new();
+    [SerializeField] private GameObject[] _enemies;
+    [SerializeField] private Transform _enemySpawn;
+    [SerializeField] private Transform[] _pathWaypoints;
 
-    IEnumerator Start()
+    private IEnumerator Start()
     {
-        var i = 0;
-        while (i != 10)
+        for (int i = 0; i < 10; i++)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(.6f);
-            i++;    
-        }
-    }
-
-    private void Update()
-    {
-        foreach(NavMeshAgent agent in navMeshWaypoints.Keys.ToList())
-        {
-            if (agent.remainingDistance > .1f) continue;
-
-            int currentDestId = navMeshWaypoints[agent];
-            if (currentDestId + 1 == PathWaypoints.Length)
+            for(int j = 0; j < 10 * UnityEngine.Random.Range(1.0f, i); j++)
             {
-                AgentReachedEnd(agent);
-                continue;
+                SpawnEnemy();
+                yield return new WaitForSeconds(.7f);
             }
-
-            navMeshWaypoints[agent] = currentDestId + 1;
-            agent.SetDestination(PathWaypoints[currentDestId + 1].position);
+            yield return new WaitForSeconds(10);
         }
-    }
-
-    private void AgentReachedEnd(NavMeshAgent agent)
-    {
-        if (!navMeshWaypoints.ContainsKey(agent)) return;
-        Destroy(agent.gameObject);
-        navMeshWaypoints.Remove(agent);
-        HealthManager.Instance.TakeDamage(3);
     }
 
     private void SpawnEnemy()
     {
-        var enemy = Instantiate(Enemies[UnityEngine.Random.Range(0, Enemies.Length)], EnemySpawn.position, EnemySpawn.rotation);
-        var navMesh = enemy.GetComponent<NavMeshAgent>();
+        Instantiate(_enemies[UnityEngine.Random.Range(0, _enemies.Length)], _enemySpawn.position, _enemySpawn.rotation);
+    }
 
-        navMesh.SetDestination(PathWaypoints[0].position);
-        navMeshWaypoints.Add(navMesh, 0);
+    public bool IsLastWaypoint(int waypointId)
+    {
+        return waypointId == _pathWaypoints.Length - 1;
+    }
+
+    public Vector3 GetWaypointAt(int waypointId)
+    {
+        return _pathWaypoints[waypointId].position;
     }
 }

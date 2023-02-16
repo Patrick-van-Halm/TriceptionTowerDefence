@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{19e1c3ee-873b-4cf8-b6de-030cab732869}">
+		<property name="assetPath">
+			<value>Music/Milky Wayvers - Japan.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>203.88571428571427</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{5469715e-e1d7-4c8d-91b4-22a930d3277b}</destination>
+		</relationship>
+	</object>
+</objects>
