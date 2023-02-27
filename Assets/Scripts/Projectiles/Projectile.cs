@@ -5,6 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private Vector3 _fwd;
+
+    private void Awake()
+    {
+        _fwd = transform.forward;
+    }
 
     private IEnumerator Start()
     {
@@ -14,6 +20,6 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        transform.position += transform.forward * _speed * Time.deltaTime;
+        transform.position += _fwd * _speed * Time.deltaTime;
     }
 }

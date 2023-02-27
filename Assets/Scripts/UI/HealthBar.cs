@@ -24,6 +24,7 @@ public class HealthBar : Slider
     private void OnHealthChanged(int health)
     {
         value = health;
+        if (_animator == null) return;
         _animator.speed = CalculateHeartBeatSpeed();
         _animator.SetTrigger("HeartbeatHit");
     }

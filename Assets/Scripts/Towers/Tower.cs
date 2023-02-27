@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     [SerializeField] protected TowerData _data;
-    [SerializeField] private Transform _barrelEnd;
+    [SerializeField] protected Transform _barrelEnd;
 
     private Coroutine _towerLoop;
     private GameObject _rangeVisualizer;

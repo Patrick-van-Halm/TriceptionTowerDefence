@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyAnimationController : MonoBehaviour
 {
+    [SerializeField] private AudioReference _moveSound;
+
     private Animator _animator;
     private NavMeshAgent _navMeshAgent;
 
@@ -23,5 +25,10 @@ public class EnemyAnimationController : MonoBehaviour
     private void UpdateIsMovingProperty()
     {
         _animator.SetBool("IsMoving", _navMeshAgent.velocity.magnitude > .1f);
+    }
+
+    public void PlaySound()
+    {
+        AudioManager.Instance?.PlaySound(gameObject, _moveSound);
     }
 }

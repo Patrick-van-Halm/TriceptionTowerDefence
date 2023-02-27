@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497e63e48c2f84b4fb816c094f9a1f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSound: {fileID: 11400000, guid: a1402f3ea1ee0af4a8d03d39415bb08f, type: 2}
 --- !u!136 &570761378296901513
 CapsuleCollider:
   m_ObjectHideFlags: 0

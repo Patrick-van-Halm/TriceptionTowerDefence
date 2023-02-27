@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoneyManager : SingletonMonoBehaviour<MoneyManager>
 {
     [SerializeField] private IntEvent _onMoneyChanged;
+    [SerializeField] private AudioReference _spendAudio;
 
     [field: SerializeField] public int Money { get; private set; } = 400;
 
@@ -13,6 +14,7 @@ public class MoneyManager : SingletonMonoBehaviour<MoneyManager>
         if (Money < amount) return;
         Money -= amount;
         _onMoneyChanged?.Invoke(Money);
+        AudioManager.Instance?.PlaySound(gameObject, _spendAudio);
     }
 
     public void Gain(int amount)
